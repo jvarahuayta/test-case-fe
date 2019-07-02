@@ -1,0 +1,7 @@
+<ul class="nav">
+    <li *ngFor="let navItem of $navItems | async" 
+    [routerLink]="navItem.route"
+    [routerLinkActive]="'active'">
+        {{ navItem.name }}
+    </li>
+</ul>

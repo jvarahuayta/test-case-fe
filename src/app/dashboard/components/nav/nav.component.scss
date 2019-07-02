@@ -1,0 +1,24 @@
+@import "../../../../styles/1-settings/index.scss";
+@import "../../../../styles/2-tools/index.scss";
+
+.nav{
+    @include layoutFlex();
+    @include alignItems(center);
+    height: 100%;
+    li{
+        cursor: pointer;
+        min-width: 110px;
+        text-align: center;
+        color: $primary-color;
+        display: block;
+        height: 100%;
+        @include layoutFlex();
+        @include directionFlex(column);
+        @include alignItems(center);
+        @include justifyContent(center);
+        &.active{
+            color: #FFF;
+            background-color: $primary-color;
+        }
+    }
+}

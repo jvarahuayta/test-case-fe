@@ -1,0 +1,73 @@
+.noselect {
+    -webkit-touch-callout: none; /* iOS Safari */
+        -webkit-user-select: none; /* Safari */
+        -khtml-user-select: none; /* Konqueror HTML */
+            -moz-user-select: none; /* Firefox */
+            -ms-user-select: none; /* Internet Explorer/Edge */
+                user-select: none; /* Non-prefixed version, currently
+                                    supported by Chrome and Opera */
+}
+
+.text-center{
+    text-align: center;
+}
+
+.text-right{
+    text-align: right;
+}
+
+.text-primary{
+    color: $primary-color;
+}
+
+.text-accent{
+    color: $accent-color;
+}
+
+// .text-warn{
+//     color: $color-warn;
+// }
+
+.text-bold{
+    font-weight: bold;
+}
+
+.text-muted{
+    color: rgba(#000,.5);//$tertiary-color;
+}
+
+.text-thin{
+    font-weight: 100;
+}
+
+.text-black{
+    color: $black !important;
+}
+
+.text-white{
+    color: #FFF;
+}
+
+.text-12{
+    font-size: 1.2rem;
+}
+
+.text-14{
+    font-size: 1.4rem;
+}
+
+.text-secondary{
+    color: $secondary-color !important;
+}
+
+.text-no-decoration{
+    text-decoration: none;
+}
+
+.text-arial{
+    font-family: $arial;
+}
+
+.text-bebas-neue{
+    font-family: $bebas-neue;
+}

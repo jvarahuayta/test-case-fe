@@ -1,0 +1,8 @@
+.#{$namespace}-badge{
+    background-color: $secondary-color;
+    color: #FFFFFF;
+    width: fit-content;
+    padding-left: 20px;
+    padding-right: 20px;
+    @include borderRadius(6px);
+}

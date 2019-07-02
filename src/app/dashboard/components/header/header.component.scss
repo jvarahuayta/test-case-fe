@@ -1,0 +1,10 @@
+@import "../../../../styles/1-settings/index.scss";
+
+.header{
+    padding: 0 30px;
+    border-bottom: 1px solid rgba(#000,.5);
+    &__content{
+        max-width: $content-max-width;
+        margin: auto;
+    }
+}

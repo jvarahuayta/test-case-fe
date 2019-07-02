@@ -1,0 +1,7 @@
+.#{$namespace}-btn{
+    border: 1px solid #000;
+    background: none;
+    padding: 10px;
+    cursor: pointer;
+    @include materialShadow(2);
+}

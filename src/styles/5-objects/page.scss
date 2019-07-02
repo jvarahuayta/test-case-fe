@@ -1,0 +1,51 @@
+.page{
+    // font-size: $font-size;
+    // background-image: url(http://157.230.229.87:85/static/imgs/backgrounds/black_bk.png);
+    // background-position: top;
+    // background-size: cover;
+    // .page-content-container{
+    //     max-width: 300px;
+    //     margin: 0 auto;
+    // }
+    // .page-title{
+    //     font-size: 1.3em;
+    // }
+    // &--white{
+    //     background-image: none;
+    //     background-color: #FFF;
+    //     color: $primary-color !important;
+    // }
+    // &--money{
+    //     background-image: url(http://157.230.229.87:85/static/imgs/backgrounds/money_bk_4.png);
+    //     &:before{
+    //         content: '';
+    //         position: absolute;
+    //         left: 0;
+    //         top: 0;
+    //         width: 100%;
+    //         height: 100%;
+    //         background-color: rgba(0,0,0,.6);
+    //     }
+    // }
+    min-height: 100vh;
+    &.not-logged{
+        background-image: url('http://157.230.229.87:85/static/imgs/web/money-bg.png');
+        background-size: cover;
+        background-repeat: no-repeat;
+        .signup, .signin{
+            position: relative;
+            &:before{
+                content: '';
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                // background-color: rgba(0,0,0,.3);
+            }
+            >*{
+                position: relative;
+            }
+        }
+    }
+}

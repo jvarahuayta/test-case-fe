@@ -1,0 +1,13 @@
+button{
+    font-family: $font-primary !important;
+    // font-size: 18px !important;
+    text-transform: none !important;
+}
+button[fluid]{
+    // min-width: 60%;
+    width: 60%;
+    max-width: 270px;
+    height: 2.7rem;
+    text-transform: capitalize;
+    border-radius: 8px;
+}

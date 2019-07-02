@@ -1,0 +1,15 @@
+@import './reset.scss';
+@import './normalize.scss';
+
+@include font-face($bebas-neue,"assets/fonts/BebasNeue-Regular", 400, italic, ttf);
+@include font-face($arial,"assets/fonts/Arial", 400, italic, ttf);
+
+*{
+    box-sizing: border-box;
+    @extend .scrollbar;
+}
+
+body{
+    font-size: $font-size;
+    font-family: $font-primary;
+}

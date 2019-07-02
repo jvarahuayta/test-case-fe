@@ -1,0 +1,29 @@
+%invalid{
+    border-color: $red;
+    @include placeholder(){
+        color: $red !important;
+    }
+
+}
+
+input, .input, textarea{
+    padding: 4px 8px;
+    min-height: 38px;
+    color: #000 !important;
+    // border: 1px solid rgba(#000,.25);
+    border: 1px solid $secondary-color;
+    background-color: #FFF;
+    @include borderRadius(6px);    
+    @include placeholder(){
+        color: #000 !important;
+    }
+    &.invalid{
+        @extend %invalid;
+    }
+}
+
+// textarea{
+//     &.invalid{
+//         @extend %invalid;
+//     }
+// }

@@ -1,0 +1,25 @@
+.bk-white{
+    background-color: #FFF;
+}
+
+.bk-accent{
+    background-color: $accent-color;
+}
+
+.bk-primary{
+    background-color: $primary-color;
+}
+
+.bk-secondary{
+    background-color: $secondary-color !important;
+}
+
+.w-background-image{
+    background-size: cover;
+    background-position: center;
+}
+
+.w-background-image-top{
+    background-size: cover;
+    background-position: top;
+}
