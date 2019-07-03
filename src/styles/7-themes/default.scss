@@ -1,7 +1,7 @@
 @import '~@angular/material/theming';
 @include mat-core();
 
-$mat-vet-primary: (
+$mat-app-primary: (
   50: $secondary-color,
   100: $secondary-color,
   200: $secondary-color,
@@ -48,7 +48,7 @@ $mat-vet-primary: (
   )
 );
 
-$mat-vet-accent: (
+$mat-app-accent: (
   50: $accent-color,
   100: $accent-color,
   200: $accent-color,
@@ -81,8 +81,8 @@ $mat-vet-accent: (
   )
 );
 
-// $mat-vet-warn: $mat-red;
-$mat-vet-warn: (
+// $mat-app-warn: $mat-red;
+$mat-app-warn: (
   50: $red,
   100: $red,
   200: $red,
@@ -129,10 +129,10 @@ $mat-vet-warn: (
   )
 );
 
-$vet-app-primary: mat-palette($mat-vet-primary, 700);
-$vet-app-accent:  mat-palette($mat-vet-accent);
-$vet-app-warn:  mat-palette($mat-vet-warn);
+$app-app-primary: mat-palette($mat-app-primary, 700);
+$app-app-accent:  mat-palette($mat-app-accent);
+$app-app-warn:  mat-palette($mat-app-warn);
 
-$vet-app-theme: mat-light-theme($vet-app-primary, $vet-app-accent, $vet-app-warn);
+$app-app-theme: mat-light-theme($app-app-primary, $app-app-accent, $app-app-warn);
 
-@include angular-material-theme($vet-app-theme);
+@include angular-material-theme($app-app-theme);

@@ -1,3 +1,17 @@
+@import "../../../../styles/1-settings/colors.scss";
+
 .fieldList{
     width: 220px;
+    ul{
+        margin-bottom: 20px;
+        li{
+            cursor: pointer;
+            padding: 10px;
+            color: #FFF;
+            background-color: #000;
+            &.active{
+                background-color: $accent-color;
+            }
+        }
+    }
 }

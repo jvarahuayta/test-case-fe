@@ -1,7 +1,17 @@
 .#{$namespace}-btn{
     border: 1px solid #000;
     background: none;
-    padding: 10px;
+    padding: 10px 15px;
     cursor: pointer;
-    @include materialShadow(2);
+    // @include materialShadow(2);
+    &:not(&--flat){
+        border-color: $accent-color;
+        background-color: $accent-color;
+        color: #FFF;
+    }
+    &--primary{
+        border-color: $primary-color;
+        background-color: $primary-color;
+        color: #FFF;
+    }
 }

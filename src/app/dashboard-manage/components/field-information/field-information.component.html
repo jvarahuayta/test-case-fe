@@ -1,3 +1,123 @@
-<p>
-  field-information works!
-</p>
+<div class="fieldInfo">
+  <form class="fieldInfo__content" [formGroup]="fieldInformationFG">
+      <div class="flex-row-layout ai-center">
+        <div class="fieldInfo__field fieldInfo__title">
+          <h1>
+            <b>{{ fieldInformation.name }}</b>
+          </h1>
+        </div>
+        <span class="flex"></span>
+        <button class="app-btn" (click)="onCrudButtonClick()"
+        [type]="mode === 'read' ? 'button' : 'submit'">
+          <span *ngIf="mode === 'read'; else saveButtonText;">
+            Edit this
+          </span>
+          <ng-template #saveButtonText>
+            Save
+          </ng-template>
+        </button>
+      </div>
+      <div class="fieldInfo__field">
+        <h6>
+          Description
+        </h6>
+        <p *ngIf="mode === 'read'; else editDescriptionTpl;">
+          {{ fieldInformation.description }}
+        </p>
+        <ng-template #editDescriptionTpl>
+          <textarea class="fill-width" formControlName="description"
+          rows="3"></textarea>
+        </ng-template>
+      </div>
+      <div class="fieldInfo__field">
+        <h6>
+          Type
+        </h6>
+        <p *ngIf="mode === 'read'; else editTypeTpl;">
+          {{ fieldInformation.type.description }}
+        </p>
+        <ng-template #editTypeTpl>
+          <select formControlName="type" [compareWith]="'id' | toSelectCompareFn">
+            <option [ngValue]="null" disabled>Pick one</option>
+            <option *ngFor="let type of $fieldTypes | async" [ngValue]="type">
+              {{ type.name }}
+            </option>
+          </select>
+        </ng-template>
+      </div>
+      <div class="fieldInfo__field">
+        <ng-container *ngIf="mode === 'read'; else editSensitivityTpl;">
+          <h6>
+              Sensitivity
+          </h6>
+          <p>
+            {{ (fieldInformation.sensitivity === 'PERSONAL' ? 'FIELD_SENSITIVITY_IS_PERSONAL' : 'FIELD_SENSITIVITY_IS_PUBLIC') | translate }}
+          </p>
+        </ng-container>
+        <ng-template #editSensitivityTpl>
+          <div class="flex-row-layout ai-center">
+            <input type="checkbox" formControlName="sensitivity" class="mr-10" id="personalDataCkb">
+            <label for="personalDataCkb">Is this personal data?</label>
+          </div>
+        </ng-template>
+      </div>
+      <div class="fieldInfo__values">
+        <table>
+          <thead>
+            <tr>
+              <th colspan="2">
+                <span>POSSIBLE VALUES</span>
+              </th>
+            </tr>
+            <tr>
+              <th>
+                <span>VALUE</span>
+              </th>
+              <th>
+                <span>DESCRIPTION</span>
+              </th>
+            </tr>
+          </thead>
+          <tbody *ngIf="mode === 'read'; else editValuesTpl;">
+            <tr *ngFor="let value of fieldInformation.values">
+              <td>
+                <span>
+                  {{ value.value }}
+                </span>
+              </td>
+              <td>
+                <span>
+                  {{ value.description }}
+                </span>
+              </td>
+            </tr>
+          </tbody>
+          <ng-template #editValuesTpl>
+            <tbody formArrayName="values">
+              <tr *ngFor="let fg of valuesFA.controls; let i = index;" [formGroupName]="i">
+                <td>
+                  <span>
+                    <input type="text" formControlName="value" class="fill-width">
+                  </span>
+                </td>
+                <td>
+                  <span>
+                    <textarea formControlName="description" class="fill-width"></textarea>
+                  </span>
+                </td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td colspan="2" class="pl-0">
+                  <button class="app-btn app-btn--flat" (click)="onAddFieldValue()">
+                    <span><b>+</b></span>&nbsp;Add possible value
+                  </button>
+                </td>
+              </tr>
+            </tfoot>
+          </ng-template>
+        </table>
+      </div>
+  </form>
+</div>

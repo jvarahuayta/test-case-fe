@@ -1,11 +1,13 @@
 <div class="dashboardManageDataPage">
-  <h1>Manage data</h1>
+  <h1>
+    <b>Manage data</b>
+  </h1>
   <div class="flex-row-layout">
-    <div class="flex-auto">
+    <div class="flex-auto no-padding">
       <app-field-list></app-field-list>
     </div>
     <div class="flex">
-      <app-field-information></app-field-information>
+      <router-outlet></router-outlet>
     </div>
   </div>
 </div>

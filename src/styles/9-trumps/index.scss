@@ -8,8 +8,4 @@
 @import "background";
 @import "border";
 @import "keyboard";
-@import "./ionic/index";
-
-.mat-radio-label-content{
-    white-space: normal;
-}
+@import "./material/index";

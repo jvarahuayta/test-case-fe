@@ -9,7 +9,7 @@
         cursor: pointer;
         min-width: 110px;
         text-align: center;
-        color: $primary-color;
+        color: $accent-color;
         display: block;
         height: 100%;
         @include layoutFlex();
@@ -18,7 +18,7 @@
         @include justifyContent(center);
         &.active{
             color: #FFF;
-            background-color: $primary-color;
+            background-color: $accent-color;
         }
     }
 }

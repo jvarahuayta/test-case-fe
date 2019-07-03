@@ -5,6 +5,10 @@ const routes: Routes = [
   {
     path: 'dashboard',
     loadChildren: 'src/app/dashboard/dashboard.module#DashboardModule'
+  },
+  {
+    path: '**',
+    redirectTo: '/dashboard'
   }
 ];
 

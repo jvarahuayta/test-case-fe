@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ManageFieldsService } from '../../services/manage-fields.service';
+import { Observable } from 'rxjs';
+import { Field } from '../../core/models/field.model';
 
 @Component({
   selector: 'app-field-list',
@@ -7,7 +10,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FieldListComponent implements OnInit {
 
-  constructor() { }
+  $fields: Observable<Field[]>
+
+  constructor( private manageFieldsSvc: ManageFieldsService ) {
+    this.$fields = this.manageFieldsSvc.getFields();
+  }
 
   ngOnInit() {
   }

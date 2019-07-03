@@ -1,10 +1,16 @@
 @import "../../../../styles/1-settings/index.scss";
+@import "../../../../styles/2-tools/index.scss";
 
 .header{
     padding: 0 30px;
-    border-bottom: 1px solid rgba(#000,.5);
+    border-bottom: 1px solid rgba(#000,.3);
     &__content{
         max-width: $content-max-width;
         margin: auto;
+        height: 60px;
+    }
+    &__title{
+        letter-spacing: 2px;
+        @include alignSelf(center);
     }
 }

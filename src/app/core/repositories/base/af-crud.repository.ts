@@ -1,7 +1,7 @@
 import { AngularFirestore } from '@angular/fire/firestore';
-import { Observable, from } from 'rxjs';
+import { Observable, from, of } from 'rxjs';
 import { Injectable } from '@angular/core';
-import { map, catchError, tap } from 'rxjs/operators';
+import { map, catchError, tap, flatMap } from 'rxjs/operators';
 
 import { ICrudRepository } from '../contracts/icrud.repository';
 import { BaseSpecification, ByIdSpecification } from '../../specifications/base/base.specification';
@@ -14,6 +14,7 @@ export abstract class AfCrudRepository<T extends BaseEntity<T>> implements ICrud
 
     protected collectionName: string = null;
     protected entityClazz: (new (partial?: Partial<T>) => T) = null;
+    protected docsWithId: boolean = true;
     private createEntity: (e) => T = ( e ) => new this.entityClazz(e);
 
     constructor(private af: AngularFirestore) {
@@ -24,11 +25,23 @@ export abstract class AfCrudRepository<T extends BaseEntity<T>> implements ICrud
 
     find(specification: BaseSpecification<T>): Observable<T[]> {
         if ( isOfType<IFirebaseSpecification>(specification, 'toQueryFn') ) {
-            return this.af.collection(this.collectionName, specification.toQueryFn() )
-            .valueChanges()
-            .pipe(
-                map( docs => docs.map( this.createEntity.bind(this) ) )
-            );
+            if( this.docsWithId ){
+                return this.af.collection(this.collectionName, specification.toQueryFn() )
+                .snapshotChanges()
+                .pipe(
+                    map( docs => docs.map( doc => ({
+                        id: doc.payload.doc.id,
+                        ...doc.payload.doc.data()
+                    }))),
+                    map( docs => docs.map( this.createEntity.bind(this) ) )
+                );
+            }else{
+                return this.af.collection(this.collectionName, specification.toQueryFn() )
+                .valueChanges()
+                .pipe(
+                    map( docs => docs.map( this.createEntity.bind(this) ) )
+                );
+            }
         }
         throw new Error("Method not implemented.");
     }
@@ -39,7 +52,16 @@ export abstract class AfCrudRepository<T extends BaseEntity<T>> implements ICrud
             .doc(specification.id)
             .valueChanges()
             .pipe(
-                map( this.createEntity.bind(this) )
+                flatMap( val => {
+                    if( !!val ){
+                        return of(val)
+                        .pipe(
+                            map( val => ({ id: specification.id, ...val }) ),
+                            map( this.createEntity.bind(this) )
+                        )
+                    }
+                    return of(undefined);
+                })
             );
         }
         throw new Error("Method not implemented.");
