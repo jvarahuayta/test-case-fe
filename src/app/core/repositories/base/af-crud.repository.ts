@@ -8,6 +8,7 @@ import { BaseSpecification, ByIdSpecification } from '../../specifications/base/
 import { BaseEntity } from '../../models/base/base.entity';
 import { isOfType } from 'src/app/shared/helpers/instance.helper';
 import { IFirebaseSpecification } from '../../specifications/contracts/firebase.specification';
+import { BaseMapper } from '../mappers/base/base.mapper';
 
 @Injectable()
 export abstract class AfCrudRepository<T extends BaseEntity<T>> implements ICrudRepository<T> {
@@ -15,6 +16,7 @@ export abstract class AfCrudRepository<T extends BaseEntity<T>> implements ICrud
     protected collectionName: string = null;
     protected entityClazz: (new (partial?: Partial<T>) => T) = null;
     protected docsWithId: boolean = true;
+    protected mapper: BaseMapper<T> = null;
     private createEntity: (e) => T = ( e ) => new this.entityClazz(e);
 
     constructor(private af: AngularFirestore) {
@@ -69,11 +71,16 @@ export abstract class AfCrudRepository<T extends BaseEntity<T>> implements ICrud
 
     create( entity: T ): Observable<T> {
         return from(
-            this.af.collection(this.collectionName).add({
-                ...entity
-            })
+            this.af.collection(this.collectionName).add(
+                !!this.mapper ?
+                this.mapper.mapToBe( entity ) :
+                { ...entity }
+            )
         ).pipe(
-            map( doc => entity )
+            map( doc => this.createEntity({
+                ...entity,
+                id: doc.id
+            }) )
         );
     }
 
@@ -81,9 +88,11 @@ export abstract class AfCrudRepository<T extends BaseEntity<T>> implements ICrud
         return from(
             this.af.collection(this.collectionName)
             .doc(entity.id)
-            .set({
-                entity
-            })
+            .set(
+                !!this.mapper ?
+                this.mapper.mapToBe( entity ) :
+                { ...entity }
+            )
         ).pipe(
             map( doc => entity )
         );

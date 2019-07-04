@@ -7,7 +7,7 @@ export class Field extends BaseEntity<Field>{
     name: string;
     description: string;
     type: FieldType;
-    sensitivity: 'PERSONAL' | 'PUBLIC';
+    sensitivity: boolean;
     values: FieldValue[];
 
 }

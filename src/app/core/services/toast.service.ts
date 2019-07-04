@@ -9,4 +9,16 @@ export class ToastService{
         });
     }
 
+    error(message: string, title: string = 'Error'): Promise<any>{
+        return this.show(message, title);
+    }
+
+    success(message: string, title: string = 'Success'): Promise<any>{
+        return this.show(message, title);
+    }
+
+    warn(message: string, title: string = 'Warning'): Promise<any>{
+        return this.show(message, title);
+    }
+
 }

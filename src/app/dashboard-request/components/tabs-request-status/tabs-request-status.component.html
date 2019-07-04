@@ -1,0 +1,12 @@
+<div class="tabRequestStatus">
+  <ul>
+    <li [class.active]="!selectedStatusCode" (click)="selectStatus(null)">
+      ALL
+    </li>
+    <li *ngFor="let status of $requestStatus | async"
+    [class.active]="selectedStatusCode === status.code"
+    (click)="selectStatus(status.code)">
+      {{ status.name }}
+    </li>
+  </ul>
+</div>

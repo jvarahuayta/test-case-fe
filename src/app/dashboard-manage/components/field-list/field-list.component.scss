@@ -1,4 +1,5 @@
 @import "../../../../styles/1-settings/colors.scss";
+@import "../../../../styles/2-tools/index.scss";
 
 .fieldList{
     width: 220px;
@@ -9,6 +10,7 @@
             padding: 10px;
             color: #FFF;
             background-color: #000;
+            @include transition2(all .2s linear);
             &.active{
                 background-color: $accent-color;
             }

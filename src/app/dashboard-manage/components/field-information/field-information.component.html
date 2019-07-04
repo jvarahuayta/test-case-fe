@@ -1,12 +1,28 @@
 <div class="fieldInfo">
   <form class="fieldInfo__content" [formGroup]="fieldInformationFG">
-      <div class="flex-row-layout ai-center">
-        <div class="fieldInfo__field fieldInfo__title">
+      <div class="flex-row-layout ai-flex-end fieldInfo__title">
+        <div *ngIf="mode === 'read'; else editNameTpl;">
           <h1>
-            <b>{{ fieldInformation.name }}</b>
+            <b>{{ fieldInformation?.name }}</b>
           </h1>
         </div>
+        <ng-template #editNameTpl>
+          <div class="fieldInfo__field no-margin">
+            <h6>
+              Key name
+            </h6>
+            <input class="fill-width" formControlName="name">
+          </div>
+        </ng-template>
         <span class="flex"></span>
+        <!-- <button class="app-btn app-btn--warn mr-10" type="button"
+        *ngIf="mode === 'read'" (click)="deleteField()">
+          <span>Delete this</span>
+        </button> -->
+        <!-- <button class="app-btn app-btn--warn mr-10" type="button"
+        *ngIf="mode === 'edit'" (click)="cancel()">
+          <span>Cancel</span>
+        </button> -->
         <button class="app-btn" (click)="onCrudButtonClick()"
         [type]="mode === 'read' ? 'button' : 'submit'">
           <span *ngIf="mode === 'read'; else saveButtonText;">
@@ -22,7 +38,7 @@
           Description
         </h6>
         <p *ngIf="mode === 'read'; else editDescriptionTpl;">
-          {{ fieldInformation.description }}
+          {{ fieldInformation?.description }}
         </p>
         <ng-template #editDescriptionTpl>
           <textarea class="fill-width" formControlName="description"
@@ -34,7 +50,7 @@
           Type
         </h6>
         <p *ngIf="mode === 'read'; else editTypeTpl;">
-          {{ fieldInformation.type.description }}
+          {{ fieldInformation?.type.description }}
         </p>
         <ng-template #editTypeTpl>
           <select formControlName="type" [compareWith]="'id' | toSelectCompareFn">
@@ -51,7 +67,9 @@
               Sensitivity
           </h6>
           <p>
-            {{ (fieldInformation.sensitivity === 'PERSONAL' ? 'FIELD_SENSITIVITY_IS_PERSONAL' : 'FIELD_SENSITIVITY_IS_PUBLIC') | translate }}
+            {{ (fieldInformation?.sensitivity ? 
+            'MANAGE_DATA.FIELD_SENSITIVITY_IS_PERSONAL' : 
+            'MANAGE_DATA.FIELD_SENSITIVITY_IS_PUBLIC') | translate }}
           </p>
         </ng-container>
         <ng-template #editSensitivityTpl>
@@ -65,7 +83,7 @@
         <table>
           <thead>
             <tr>
-              <th colspan="2">
+              <th [attr.colspan]="mode === 'read' ? 2 : 2">
                 <span>POSSIBLE VALUES</span>
               </th>
             </tr>
@@ -76,10 +94,12 @@
               <th>
                 <span>DESCRIPTION</span>
               </th>
+              <th *ngIf="mode === 'edit'">
+              </th>
             </tr>
           </thead>
           <tbody *ngIf="mode === 'read'; else editValuesTpl;">
-            <tr *ngFor="let value of fieldInformation.values">
+            <tr *ngFor="let value of fieldInformation?.values">
               <td>
                 <span>
                   {{ value.value }}
@@ -105,12 +125,19 @@
                     <textarea formControlName="description" class="fill-width"></textarea>
                   </span>
                 </td>
+                <!-- <td>
+                  <span>
+                    <button class="app-btn app-btn--warn" (click)="removeFieldValue(i)">
+                      &times;
+                    </button>
+                  </span>
+                </td> -->
               </tr>
             </tbody>
             <tfoot>
               <tr>
                 <td colspan="2" class="pl-0">
-                  <button class="app-btn app-btn--flat" (click)="onAddFieldValue()">
+                  <button class="app-btn app-btn--flat" (click)="addFieldValue()">
                     <span><b>+</b></span>&nbsp;Add possible value
                   </button>
                 </td>

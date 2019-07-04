@@ -1,0 +1,38 @@
+@import "../../../../styles/1-settings/colors.scss";
+
+.filteredRequestList{
+    table{
+        width: 100%;
+        th, td{
+            padding: 20px;
+            text-align: left;
+        }
+        thead{
+            tr{
+                th{
+                    letter-spacing: 2px;
+                }
+                &:first-child{
+                    th{
+                        color: #FFF;
+                        background-color: $accent-color;
+                        font-weight: bold;
+                        font-size: 1.1em;
+                    }
+                }
+                &:nth-child(2){
+                    th{
+                        font-weight: bold;
+                        padding: 25px;
+                    }
+                }
+            }
+        }
+    }
+    .request{
+        &__status{
+            padding: 10px;
+            color: #FFF;
+        }
+    }
+}

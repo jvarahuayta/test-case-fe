@@ -1,12 +1,17 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 import { DashboardRequestRoutingModule } from './dashboard-request-routing.module';
+import { DashboardRequestComponent } from './dashboard-request.component';
+import { DashboardRequestCoreModule } from './core/dashboard-request-core.module';
+import { DashboardRequestPagesModule } from './pages/dashboard-request-pages.module';
 
 @NgModule({
-  declarations: [],
+  declarations: [DashboardRequestComponent],
   imports: [
-    CommonModule,
+    RouterModule,
+    DashboardRequestPagesModule,
+    DashboardRequestCoreModule,
     DashboardRequestRoutingModule
   ]
 })

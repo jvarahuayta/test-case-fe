@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ManageFieldsService } from '../../services/manage-fields.service';
 import { Observable } from 'rxjs';
 import { Field } from '../../core/models/field.model';
+import { ManageFieldsService } from '../../core/services/manage-fields.service';
 
 @Component({
   selector: 'app-field-list',

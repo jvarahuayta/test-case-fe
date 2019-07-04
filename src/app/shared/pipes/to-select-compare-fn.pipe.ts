@@ -7,6 +7,9 @@ import { messages } from 'src/app/core/constants/messages.constant';
 export class ToSelectCompareFn implements PipeTransform {
     transform(field: string) {
         return (a,b) => {
+            if ( !a && !b ){
+                return true;
+            }
             if ( !a || !b ) {
                 return false;
             }

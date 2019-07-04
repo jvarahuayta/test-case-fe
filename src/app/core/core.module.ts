@@ -7,6 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { environment } from 'src/environments/environment';
 import { GetAfRecordByIdResolver } from './resolvers/get-af-record-by-id.resolver';
 import { ToastService } from './services/toast.service';
+import { AlertsService } from './services/alerts.service';
 
 @NgModule({
   declarations: [],
@@ -18,7 +19,8 @@ import { ToastService } from './services/toast.service';
   ],
   providers: [
     GetAfRecordByIdResolver,
-    ToastService
+    ToastService,
+    AlertsService
   ]
 })
 export class CoreModule { }

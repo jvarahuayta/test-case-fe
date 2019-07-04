@@ -2,10 +2,10 @@ import { Injectable } from '@angular/core';
 
 import { FieldsRepository } from '../repositories/fields.repository';
 import { Observable } from 'rxjs';
-import { Field } from '../core/models/field.model';
 import { GetAllRecordsSpecification } from 'src/app/core/specifications/base/base.specification';
-import { FieldType } from '../core/models/field-type.model';
 import { FieldTypesRepository } from '../repositories/field-types.repository';
+import { Field } from '../models/field.model';
+import { FieldType } from '../models/field-type.model';
 
 @Injectable()
 export class ManageFieldsService{
@@ -20,5 +20,17 @@ export class ManageFieldsService{
 
     getFieldTypes(): Observable<FieldType[]>{
         return this.fieldTypesRepo.find( new GetAllRecordsSpecification() );
+    }
+
+    updateField(field: Field): Observable<Field>{
+        return this.fieldsRepo.update(field);
+    }
+
+    createField(field: Field): Observable<Field>{
+        return this.fieldsRepo.create(field);
+    }
+
+    deleteField(field: Field): Observable<Field>{
+        return this.fieldsRepo.delete(field);
     }
 }

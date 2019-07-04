@@ -1,0 +1,14 @@
+@import "../../../../styles/2-tools/index.scss";
+
+.selectOrCreateAField{
+    &__content{
+        width: 300px;
+        min-height: 400px;
+        text-align: center;
+        margin: auto;
+        font-weight: bold;
+        font-size: 2em;
+        @include layoutFlex();
+        @include alignItems(center);
+    }
+}
