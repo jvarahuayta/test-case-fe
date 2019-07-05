@@ -11,7 +11,7 @@
             <h6>
               Key name
             </h6>
-            <input class="fill-width" formControlName="name">
+            <input class="fill-width" formControlName="name" id="keyNameFC">
           </div>
         </ng-template>
         <span class="flex"></span>
@@ -24,7 +24,7 @@
           <span>Cancel</span>
         </button> -->
         <button class="app-btn" (click)="onCrudButtonClick()"
-        [type]="mode === 'read' ? 'button' : 'submit'">
+        [type]="mode === 'read' ? 'button' : 'submit'" id="editBtn">
           <span *ngIf="mode === 'read'; else saveButtonText;">
             Edit this
           </span>
@@ -42,7 +42,7 @@
         </p>
         <ng-template #editDescriptionTpl>
           <textarea class="fill-width" formControlName="description"
-          rows="3"></textarea>
+          rows="3"  id="descriptionFC"></textarea>
         </ng-template>
       </div>
       <div class="fieldInfo__field">
@@ -50,10 +50,11 @@
           Type
         </h6>
         <p *ngIf="mode === 'read'; else editTypeTpl;">
-          {{ fieldInformation?.type.description }}
+          {{ fieldInformation?.type?.description }}
         </p>
         <ng-template #editTypeTpl>
-          <select formControlName="type" [compareWith]="'id' | toSelectCompareFn">
+          <select formControlName="type" [compareWith]="'id' | toSelectCompareFn"
+          id="typeFC">
             <option [ngValue]="null" disabled>Pick one</option>
             <option *ngFor="let type of $fieldTypes | async" [ngValue]="type">
               {{ type.name }}
@@ -74,7 +75,8 @@
         </ng-container>
         <ng-template #editSensitivityTpl>
           <div class="flex-row-layout ai-center">
-            <input type="checkbox" formControlName="sensitivity" class="mr-10" id="personalDataCkb">
+            <input type="checkbox" formControlName="sensitivity" class="mr-10" id="personalDataCkb"
+            id="sensitivityFC">
             <label for="personalDataCkb">Is this personal data?</label>
           </div>
         </ng-template>
@@ -137,7 +139,8 @@
             <tfoot>
               <tr>
                 <td colspan="2" class="pl-0">
-                  <button class="app-btn app-btn--flat" (click)="addFieldValue()">
+                  <button class="app-btn app-btn--flat" (click)="addFieldValue()"
+                  id="addValueBtn">
                     <span><b>+</b></span>&nbsp;Add possible value
                   </button>
                 </td>

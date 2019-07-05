@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ListRequestsPageComponent } from './list-requests-page.component';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 describe('ListRequestsPageComponent', () => {
   let component: ListRequestsPageComponent;
@@ -8,7 +9,8 @@ describe('ListRequestsPageComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ListRequestsPageComponent ]
+      declarations: [ ListRequestsPageComponent ],
+      schemas: [ NO_ERRORS_SCHEMA ]
     })
     .compileComponents();
   }));

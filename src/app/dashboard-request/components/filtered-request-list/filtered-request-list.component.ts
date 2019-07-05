@@ -3,7 +3,7 @@ import { Observable, combineLatest } from 'rxjs';
 import { Request } from '../../core/models/request.model';
 import { RequestsService } from '../../core/services/requests.service';
 import { ActivatedRoute } from '@angular/router';
-import { takeUntil, flatMap, map, filter } from 'rxjs/operators';
+import { takeUntil, flatMap, map, filter, tap } from 'rxjs/operators';
 import { componentDestroyed } from 'src/app/shared/helpers/observable.helper';
 
 @Component({

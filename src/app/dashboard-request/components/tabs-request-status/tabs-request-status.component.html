@@ -5,7 +5,7 @@
     </li>
     <li *ngFor="let status of $requestStatus | async"
     [class.active]="selectedStatusCode === status.code"
-    (click)="selectStatus(status.code)">
+    (click)="selectStatus(status.code)" [attr.data-status-code]="status.code">
       {{ status.name }}
     </li>
   </ul>

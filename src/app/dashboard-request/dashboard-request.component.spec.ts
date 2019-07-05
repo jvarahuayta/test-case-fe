@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DashboardRequestComponent } from './dashboard-request.component';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 describe('DashboardRequestComponent', () => {
   let component: DashboardRequestComponent;
@@ -8,7 +9,8 @@ describe('DashboardRequestComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DashboardRequestComponent ]
+      declarations: [ DashboardRequestComponent ],
+      schemas: [ NO_ERRORS_SCHEMA ]
     })
     .compileComponents();
   }));

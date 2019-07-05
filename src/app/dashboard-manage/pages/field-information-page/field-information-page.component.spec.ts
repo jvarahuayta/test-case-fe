@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { FieldInformationPageComponent } from './field-information-page.component';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 describe('FieldInformationPageComponent', () => {
   let component: FieldInformationPageComponent;
@@ -8,7 +9,8 @@ describe('FieldInformationPageComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FieldInformationPageComponent ]
+      declarations: [ FieldInformationPageComponent ],
+      schemas: [ NO_ERRORS_SCHEMA ]
     })
     .compileComponents();
   }));

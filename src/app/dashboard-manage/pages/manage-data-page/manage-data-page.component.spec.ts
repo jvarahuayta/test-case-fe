@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ManageDataPageComponent } from './manage-data-page.component';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 describe('ManageDataPageComponent', () => {
   let component: ManageDataPageComponent;
@@ -8,7 +9,8 @@ describe('ManageDataPageComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ManageDataPageComponent ]
+      declarations: [ ManageDataPageComponent ],
+      schemas: [ NO_ERRORS_SCHEMA ]
     })
     .compileComponents();
   }));

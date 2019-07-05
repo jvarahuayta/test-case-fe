@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SelectOrCreateAFieldPageComponent } from './select-or-create-a-field-page.component';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 describe('SelectOrCreateAFieldPageComponent', () => {
   let component: SelectOrCreateAFieldPageComponent;
@@ -8,7 +9,8 @@ describe('SelectOrCreateAFieldPageComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SelectOrCreateAFieldPageComponent ]
+      declarations: [ SelectOrCreateAFieldPageComponent ],
+      schemas: [ NO_ERRORS_SCHEMA ]
     })
     .compileComponents();
   }));
